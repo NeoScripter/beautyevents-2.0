@@ -165,7 +165,7 @@
 
             <a
                 href=""
-                class="flex mx-auto text-lg items-center justify-center gap-2 my-12 lg:my-16 xl:mt-20 text-balance text-center lg:w-max md:max-w-max rounded-full border border-primary-pink py-3 px-6 font-medium uppercase text-primary-pink  transition-colors duration-300 ease-in-out hover:bg-primary-pink hover:text-white"
+                class="flex mx-auto text-lg items-center justify-center gap-2 my-12 lg:my-16 xl:mt-20 text-balance text-center lg:w-max md:max-w-max rounded-full border border-primary-pink py-3 px-6 font-medium uppercase text-primary-pink transition-colors duration-300 ease-in-out hover:bg-primary-pink hover:text-white"
             >
                 <span>Start TRAIN with the best training materials now</span>
                 <img
@@ -351,13 +351,55 @@
 </template>
 
 <template id="card-template">
-    <div class="max-w-80">
-        <div>
-            <img
-                src="./images/placeholder-1.webp"
-                alt=""
-                class="w-full object-cover object-center"
-            />
+    <div class="max-w-80 mx-auto carosel-card">
+        <div class="overflow-x-clip aspect-square relative">
+            <div
+                class="absolute w-full top-1/2 flex items-center justify-between px-3 z-10"
+            >
+                <button
+                    class="cursor-pointer border border-white rounded-full flex items-center justify-center w-10 h-10 transition-colors duration-300 ease-in-out hover:bg-white carosel-card-left-btn"
+                >
+                    <img
+                        src="./svgs/card-scroll-left.svg"
+                        alt="scroll carousel to the left"
+                        class="mr-1"
+                    />
+                </button>
+                <button
+                    class="cursor-pointer border border-white rounded-full flex items-center justify-center w-10 h-10 transition-colors duration-300 ease-in-out hover:bg-white carosel-card-right-btn"
+                >
+                    <img
+                        src="./svgs/card-scroll-right.svg"
+                        alt="scroll carousel to the right"
+                        class="ml-1"
+                    />
+                </button>
+            </div>
+            <div
+                class="flex h-full transition-transform duration-500 ease-in-out carosel-card-viewport"
+            >
+                <div class="shrink-0 w-full aspect-square carosel-card-element">
+                    <img
+                        src="./images/placeholder-1.webp"
+                        alt=""
+                        class="w-full object-cover object-center h-full"
+                    />
+                </div>
+                <div class="shrink-0 aspect-square carosel-card-element">
+                    <img
+                        src="./images/placeholder-2.webp"
+                        alt=""
+                        class="w-full object-cover object-center h-full"
+                    />
+                </div>
+                <div class="shrink-0 aspect-square carosel-card-element">
+                    <img
+                        src="./images/placeholder-1.webp"
+                        alt=""
+                        class="w-full object-cover object-center h-full"
+                    />
+                </div>
+            </div>
         </div>
         <div class="bg-dark-gray rounded-br-xl rounded-bl-xl">
             <div

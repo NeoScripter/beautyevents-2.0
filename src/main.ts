@@ -122,3 +122,95 @@ if (benefitsTemplate && benefitsOutput) {
 } else {
     console.log("not found")
 }
+
+const CAROUSEL_ELEMENTS = {
+    CAROUSEL: '.carosel-card',
+    VIEWPORT: '.carosel-card-viewport',
+    ELEMENT: '.carosel-card-element',
+    PREV_BTN: '.carosel-card-left-btn',
+    NEXT_BTN: '.carosel-card-right-btn',
+}
+
+class CardCarouselHandler {
+    private carousel: HTMLDivElement; 
+    private viewport: HTMLDivElement | null; 
+    private prevBtn: HTMLButtonElement | null; 
+    private nextBtn: HTMLButtonElement | null;
+    private offset: number; 
+    private elementLength: number;
+    private touchStart: number;
+    private touchEnd: number;
+
+
+
+    constructor(carousel: HTMLDivElement) {
+        this.carousel = carousel;
+        this.viewport = this.carousel.querySelector<HTMLDivElement>(CAROUSEL_ELEMENTS.VIEWPORT);
+        this.prevBtn = this.carousel.querySelector<HTMLButtonElement>(CAROUSEL_ELEMENTS.PREV_BTN);
+        this.nextBtn = this.carousel.querySelector<HTMLButtonElement>(CAROUSEL_ELEMENTS.NEXT_BTN);
+        this.offset = 0;
+        this.elementLength = this.carousel?.querySelectorAll<HTMLDivElement>(CAROUSEL_ELEMENTS.ELEMENT).length || 0;
+
+        this.touchStart = 0;
+        this.touchEnd = 0;
+    }
+
+    initCarousel() {
+        this.addNextBtnEventListener();
+        this.addPrevBtnEventListener();
+        this.addSwipeEventListener();
+    }
+
+    move(modifier: number) {
+        if (this.viewport == null) return 
+
+        this.updateOffset(modifier);
+        this.viewport.style.transform = `translateX(-${this.offset * 100}%)`;
+    } 
+
+    updateOffset(modifier: number) {
+        if (modifier > 0) {
+            this.offset = (this.offset + modifier) % this.elementLength;
+        } else {
+            this.offset = this.offset === 0 ? this.elementLength - 1 : this.offset - Math.abs(modifier);
+        }
+    }
+
+    addSwipeEventListener() {
+        if (this.viewport == null) return;
+
+        this.viewport.addEventListener('touchstart', (e) => {
+            this.touchStart = e.touches[0].clientX;
+        })
+
+        this.viewport.addEventListener('touchend', (e) => {
+            this.touchEnd = e.changedTouches[0].clientX;
+        })
+
+        if (this.touchStart < this.touchEnd - 50) {
+            this.move(1);
+        } else if (this.touchStart > this.touchEnd + 50) {
+            this.move(-1);
+        }
+    }
+
+    addPrevBtnEventListener() {
+        if (this.prevBtn == null) return;
+
+        this.prevBtn.addEventListener('click', () => this.move(-1));
+    }
+
+    addNextBtnEventListener() {
+        if (this.nextBtn == null) return;
+
+        this.nextBtn.addEventListener('click', () => this.move(1));
+    }
+}
+
+const allCardCarousels = document.querySelectorAll<HTMLDivElement>(CAROUSEL_ELEMENTS.CAROUSEL);
+
+if (allCardCarousels != null) {
+    allCardCarousels.forEach(carouselCard => {
+        new CardCarouselHandler(carouselCard).initCarousel();
+    })
+}
