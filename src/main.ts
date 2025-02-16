@@ -177,21 +177,20 @@ class CardCarouselHandler {
     }
 
     addSwipeEventListener() {
-        if (this.viewport == null) return;
-
-        this.viewport.addEventListener('touchstart', (e) => {
+        this.carousel.addEventListener('touchstart', (e) => {
             this.touchStart = e.touches[0].clientX;
         })
 
-        this.viewport.addEventListener('touchend', (e) => {
+        this.carousel.addEventListener('touchend', (e) => {
             this.touchEnd = e.changedTouches[0].clientX;
+
+            if (this.touchStart < this.touchEnd - 50) {
+                this.move(-1);
+            } else if (this.touchStart > this.touchEnd + 50) {
+                this.move(1);
+            }
         })
 
-        if (this.touchStart < this.touchEnd - 50) {
-            this.move(1);
-        } else if (this.touchStart > this.touchEnd + 50) {
-            this.move(-1);
-        }
     }
 
     addPrevBtnEventListener() {
