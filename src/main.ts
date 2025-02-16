@@ -62,3 +62,63 @@ if (advantagesTemplate && advantagesOutput) {
 } else {
     console.log("not found")
 }
+
+const benefitsCards = [
+    {
+        prefix: 'by',
+        number:
+            '30%',
+        content: 'Increases the trainer’s earnings'
+    },
+    {
+        prefix: 'by',
+        number:
+            '40%',
+        content: 'Boost in training efficiency'
+    },
+    {
+        prefix: 'by',
+        number:
+            '70%',
+        content: 'Simplifies understanding of difficult information'
+    },
+    {
+        prefix: 'up to',
+        number:
+            '80%',
+        content: 'Students retain information through visuals'
+    },
+    {
+        prefix: 'by',
+        number:
+            '90%',
+        content: 'Increase student involvement'
+    },
+];
+
+const benefitsTemplate = document.getElementById(
+    'benefits-template'
+) as HTMLTemplateElement;
+
+const benefitsOutput = document.getElementById('benefits-grid') as HTMLDivElement;
+
+
+if (benefitsTemplate && benefitsOutput) {
+    for (let i = 0; i < benefitsCards.length; i++) {
+        const card = benefitsCards[i];
+        const clone = benefitsTemplate.content.cloneNode(true) as DocumentFragment;
+
+        const prefixElement = clone.querySelector(".benefits-prefix");
+        const numberElement = clone.querySelector(".benefits-number");
+        const contentElement = clone.querySelector(".benefits-content");
+
+        if (prefixElement) prefixElement.textContent = card.prefix;
+        if (numberElement) numberElement.textContent = card.number;
+        if (contentElement) contentElement.textContent = card.content;
+
+        benefitsOutput.appendChild(clone);
+    }
+  
+} else {
+    console.log("not found")
+}

@@ -38,7 +38,7 @@
             >
                 <span>free consultation</span>
                 <img
-                    src="./public/svgs/arrow-btn.svg"
+                    src="./svgs/arrow-btn.svg"
                     class="w-3 h-3"
                     alt="pink arrow"
                 />
@@ -68,7 +68,7 @@
                         Trusted by the majority
                     </p>
                     <img
-                        src="./public/images/comparison-2.webp"
+                        src="./images/comparison-2.webp"
                         alt="A digitally manipulated image of a woman's face with beauty mapping lines drawn over it, illustrating facial symmetry and eyebrow shaping. The image is placed on a slightly curled paper, mounted on a marble-textured pedestal with a circular frame in the background."
                     />
                 </div>
@@ -79,17 +79,105 @@
                         OUR DOCUMENT
                     </p>
                     <img
-                        src="./public/images/comparison-1.webp"
+                        src="./images/comparison-1.webp"
                         alt="A spiral-bound beauty training study book titled 'Basic Course - Permanent Makeup,' featuring a cover image of a young woman with flawless makeup and subtle colorful highlights in her hair. The book is placed on a multi-tiered marble pedestal with pink circular accents in the background."
                     />
                 </div>
             </div>
 
-            <div class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(280px,1fr))] lg:grid-cols-2" id="advantages-grid"></div>
+            <div
+                class="grid gap-4 grid-cols-[repeat(auto-fit,minmax(280px,1fr))] lg:grid-cols-2"
+                id="advantages-grid"
+            ></div>
+
+            <div
+                class="overflow-x-auto my-8 lg:my-14 2xl:my-20 scrollbar-hidden select-none"
+            >
+                <div
+                    class="flex gap-4 w-[1300px] xl:w-[1400px] xl:gap-6 mx-auto"
+                    id="benefits-grid"
+                ></div>
+                <div
+                    class="flex items-center gap-2 mt-8 mx-auto w-max xl:hidden"
+                >
+                    <img
+                        src="./svgs/scroll-left.svg"
+                        alt="scroll to the left"
+                        class="w-8 h-5"
+                    />
+                    <img
+                        src="./svgs/scroll-right.svg"
+                        alt="scroll to the right"
+                        class="w-8 h-5"
+                    />
+                </div>
+            </div>
+
+            <h3
+                class="font-headings text-2xl text-center uppercase text-balance lg:text-4xl 2xl:text-5xl mb-16 text-primary-black"
+            >
+                PLACE YOUR ORDER IN 3 STEPS:
+            </h3>
+
+            <div class="flex flex-col items-center gap-12 lg:gap-16 xl:flex-row xl:gap-4">
+                <div class="p-4 border border-slate-500 rounded-xl w-4/5 h-38">
+                    <div
+                        class="relative -top-12 bg-white rounded-full aspect-square flex items-center justify-center text-2xl p-2 border border-slate-500 w-17 h-17 mx-auto"
+                    >
+                        1
+                    </div>
+                    <div
+                        class="uppercase font-semibold text-balance text-center  text-xl sm:text-2xl relative -top-5 sm:-top-0"
+                    >
+                        Choose your
+                        <span class="text-primary-pink">materials</span>
+                    </div>
+                </div>
+                <div class="p-4 border border-slate-500 rounded-xl w-4/5 h-38">
+                  <div
+                      class="relative -top-12 bg-white rounded-full aspect-square flex items-center justify-center text-2xl p-2 border border-slate-500 w-17 h-17 mx-auto"
+                  >
+                      2
+                  </div>
+                  <div
+                      class="uppercase font-semibold text-balance text-center text-xl sm:text-2xl relative -top-5 sm:-top-0"
+                  >
+                      Adapt them 
+                      <span class="text-primary-pink">to your brand</span>
+                  </div>
+              </div>
+              <div class="p-4 border border-slate-500 rounded-xl w-4/5 h-38">
+                <div
+                    class="relative -top-12 bg-white rounded-full aspect-square flex items-center justify-center text-2xl p-2 border border-slate-500 w-17 h-17 mx-auto"
+                >
+                    3
+                </div>
+                <div
+                    class="uppercase font-semibold text-balance text-center text-xl sm:text-2xl relative -top-10 sm:-top-5"
+                >
+                    Receive your ready-to-use guide in
+                    <span class="text-primary-pink">just 3 days!</span>
+                </div>
+            </div>
+            </div>
         </div>
         <script type="module" src="/src/main.ts"></script>
     </body>
 </html>
+
+<template id="benefits-template">
+    <div class="p-6 rounded-2xl border border-gray-200 w-70 lg:w-100">
+        <span
+            class="font-medium uppercase mb-4 flex items-end justify-center gap-2"
+        >
+            <span class="benefits-prefix block"></span>
+            <span
+                class="text-primary-pink text-6xl font-bold benefits-number"
+            ></span>
+        </span>
+        <div class="text-center text-balance text-sm benefits-content"></div>
+    </div>
+</template>
 
 <template id="advantages-template">
     <div
@@ -112,7 +200,7 @@
     <div class="max-w-80">
         <div>
             <img
-                src="./public/images/placeholder-1.webp"
+                src="./images/placeholder-1.webp"
                 alt=""
                 class="w-full object-cover object-center"
             />
